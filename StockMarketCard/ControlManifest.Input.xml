@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="DancingWithCrmControls" constructor="StockMarketCard" version="0.0.1" display-name-key="StockMarketCard_Display_Key" description-key="StockMarketCard_Desc_Key" control-type="standard">
+  <control namespace="DancingWithCrmControls" constructor="StockMarketCard" version="1.0.0" display-name-key="StockUpdateCard" description-key="Card to show stock update" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-    <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
-    <!-- 
-      Property node's of-type attribute can be of-type-group attribute. 
-      Example:
-      <type-group name="numbers">
-        <type>Whole.None</type>
-        <type>Currency</type>
-        <type>FP</type>
-        <type>Decimal</type>
-      </type-group>
-      <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
-    -->
+    <property name="Symbol" display-name-key="Symbol" description-key="Input stock symbol" of-type="SingleLine.Text" usage="bound" required="false" />
+    <property name="ApiKey" display-name-key="ApiKey" description-key="Your Alpha Ventage API key" of-type="SingleLine.Text" usage="bound" required="false" />
+
     <resources>
       <code path="index.ts" order="1"/>
       <!-- UNCOMMENT TO ADD MORE RESOURCES

@@ -36,14 +36,17 @@ export class StockMarketCard implements ComponentFramework.StandardControl<IInpu
 		this._container = container;
 		this._context = context;
 
+		let symbol = context.parameters.Symbol.raw || "MSFT";
+		let apiKey = context.parameters.ApiKey.raw || "demo";
+
 		this.getCard = this.getCard.bind(this);
 		this.createCard = this.createCard.bind(this);
 
-		this.getStockInfo("MSFT");
+		this.getStockInfo(symbol, apiKey);
 	}
 
-	private getStockInfo(symbol: string) {
-		fetch("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey=demo")
+	private getStockInfo(symbol: string, apiKey: string) {
+		fetch("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey="+apiKey)
 			.then((response) => {
 				return response.json();
 			})
@@ -71,20 +74,19 @@ export class StockMarketCard implements ComponentFramework.StandardControl<IInpu
 		let card = this.getCard(quoteDetails);
 
 		// Create an AdaptiveCard instance
-		var adaptiveCard = new AdaptiveCards.AdaptiveCard();
+		let adaptiveCard = new AdaptiveCards.AdaptiveCard();
 
 		// Set its hostConfig property unless you want to use the default Host Config
 		// Host Config defines the style and behavior of a card
 		adaptiveCard.hostConfig = new AdaptiveCards.HostConfig({
 			fontFamily: "Segoe UI, Helvetica Neue, sans-serif"
-			// More host config options
 		});
 
 		// Parse the card payload
 		adaptiveCard.parse(card);
 
 		// Render the card to an HTML element:
-		var renderedCard = adaptiveCard.render();
+		let renderedCard = adaptiveCard.render();
 
 		// And finally insert it somewhere in your page:
 		this._container.appendChild(renderedCard);

@@ -1,0 +1,2 @@
+C:\Code\PCF-StockMarketCard\obj\Debug\PCF-StockMarketCard.pcfprojAssemblyReference.cache
+C:\Code\PCF-StockMarketCard\obj\Debug\PCF-StockMarketCard.pcfproj.CoreCompileInputs.cache
